@@ -22,3 +22,6 @@ Instructions:
 https://insert-your-route-here-from-openshift/hello/oom
 ```
 ***BOOM!***
+
+If you create tmpspace in kubernetes and your pod goes down becuase of an OOM, When it starts, if it starts on the same node, it will have the same storage and you can get to your heap dump.  If not, you may need to create a side-car to get your heap dump. 
+https://danlebrero.com/2018/11/20/how-to-do-java-jvm-heapdump-in-kubernetes/
