@@ -3,14 +3,21 @@ package org.acme;
 import java.util.LinkedList;
 import java.util.List;
 
+import io.quarkus.runtime.Quarkus;
+import io.quarkus.runtime.annotations.QuarkusMain;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
 @Path("/hello")
+@QuarkusMain
 public class GreetingResource {
 
+    public static void main(String[] args) {
+        Quarkus.run(args);
+    }
+    
     @GET
     @Path("status")
     @Produces(MediaType.TEXT_PLAIN)
