@@ -42,7 +42,7 @@
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-container-image-jib</artifactId>
+      <artifactId>quarkus-openshift</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
@@ -81,6 +81,24 @@
           </compilerArgs>
         </configuration>
       </plugin>
+      <plugin> 
+
+                <!-- Building an executable jar -->
+
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                  <archive>
+                    <manifest>
+
+                    <!-- give full qualified name of your main class-->
+                      <mainClass>org.acme.GreetingResource</mainClass>
+
+                    </manifest>
+                  </archive>
+                </configuration>
+    </plugin>
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${surefire-plugin.version}</version>
