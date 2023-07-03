@@ -15,7 +15,7 @@ public class GreetingResource {
     @Path("status")
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
-        return "Hello again RESTEasy";
+        return "Hello RESTEasy";
     }
 
     @GET
