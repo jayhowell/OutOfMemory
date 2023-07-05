@@ -13,6 +13,7 @@ import jakarta.ws.rs.core.MediaType;
 @Path("/hello")
 @QuarkusMain
 public class GreetingResource {
+    public static boolean ready=false;
 
     public static void main(String[] args) {
         Quarkus.run(args);
@@ -23,6 +24,18 @@ public class GreetingResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
         return "Hello RESTEasy";
+    }
+
+    @GET
+    @Path("setready")
+    public void setReady() {
+        GreetingResource.ready=true;
+    }
+
+    @GET
+    @Path("setNotready")
+    public void setNotReady() {
+        GreetingResource.ready=false;
     }
 
     @GET

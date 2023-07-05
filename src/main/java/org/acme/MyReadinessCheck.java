@@ -1,13 +1,15 @@
 package org.acme;
 
+
 import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
-import org.eclipse.microprofile.health.Liveness;
 import org.eclipse.microprofile.health.Readiness;
 
-@Liveness
+import jakarta.enterprise.context.ApplicationScoped;
+
 @Readiness
-public class MyLivenessCheck implements HealthCheck {
+@ApplicationScoped
+public class MyReadinessCheck implements HealthCheck {
 
     @Override
     public HealthCheckResponse call() {
@@ -15,7 +17,4 @@ public class MyLivenessCheck implements HealthCheck {
             return HealthCheckResponse.up("alive");
         else return HealthCheckResponse.down("dead");
     }
-
-
-
 }
