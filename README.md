@@ -38,5 +38,4 @@ https://danlebrero.com/2018/11/20/how-to-do-java-jvm-heapdump-in-kubernetes/
 oc login
 oc project oom
 ./mvnw clean package -Dquarkus.container-image.build=true -DskipTests
-oc apply 
 \~\~\~
