@@ -13,8 +13,8 @@ import jakarta.ws.rs.core.MediaType;
 @Path("/hello")
 @QuarkusMain
 public class GreetingResource {
-    public static boolean ready=false;
-    public static boolean alive=false;
+    public static boolean ready=true;
+    public static boolean alive=true;
 
     public static void main(String[] args) {
         Quarkus.run(args);
@@ -24,7 +24,7 @@ public class GreetingResource {
     @Path("status")
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
-        return "Hello RESTEasy - Current status Ready/Alive("+GreetingResource.ready+"/"+GreetingResource.alive+")";
+        return System.getenv("HOSTNAME")+"Current status Ready/Alive("+GreetingResource.ready+"/"+GreetingResource.alive+")";
     }
 
     @GET
@@ -32,7 +32,7 @@ public class GreetingResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String setReady() {
         GreetingResource.ready=true;
-        return "Ready = " + GreetingResource.ready;
+        return System.getenv("HOSTNAME")+":Ready = " + GreetingResource.ready;
     }
 
     @GET
@@ -40,7 +40,7 @@ public class GreetingResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String setNotReady() {
         GreetingResource.ready=false;
-        return "Ready = " + GreetingResource.ready; 
+        return System.getenv("HOSTNAME")+":Ready = " + GreetingResource.ready; 
     }
 
     @GET
@@ -48,7 +48,7 @@ public class GreetingResource {
     public String setAlive()
     {
         GreetingResource.alive=true;
-        return "Ready = " + GreetingResource.alive;
+        return System.getenv("HOSTNAME")+":Ready = " + GreetingResource.alive;
     }
 
     @GET
@@ -56,7 +56,7 @@ public class GreetingResource {
     public String setNotAlive()
     {
         GreetingResource.alive=false;
-        return "Ready = " + GreetingResource.alive;
+        return System.getenv("HOSTNAME")+":Ready = " + GreetingResource.alive;
     }
 
 

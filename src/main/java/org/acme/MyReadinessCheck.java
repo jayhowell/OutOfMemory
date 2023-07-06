@@ -14,7 +14,7 @@ public class MyReadinessCheck implements HealthCheck {
     @Override
     public HealthCheckResponse call() {
         if(GreetingResource.ready==true)
-            return HealthCheckResponse.up("alive");
-        else return HealthCheckResponse.down("dead");
+            return HealthCheckResponse.up("readiness:ready");
+        else return HealthCheckResponse.down("readiness:notready");
     }
 }
