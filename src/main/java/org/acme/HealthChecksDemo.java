@@ -12,7 +12,7 @@ import jakarta.ws.rs.core.MediaType;
 
 @Path("/hello")
 @QuarkusMain
-public class GreetingResource {
+public class HealthChecksDemo {
     public static boolean ready=true;
     public static boolean alive=true;
 
@@ -23,40 +23,51 @@ public class GreetingResource {
     @GET
     @Path("status")
     @Produces(MediaType.TEXT_PLAIN)
-    public String hello() {
-        return System.getenv("HOSTNAME")+"Current status Ready/Alive("+GreetingResource.ready+"/"+GreetingResource.alive+")";
+    public String getStatus() {
+        String ready_status;
+        String alive_status;
+        if(HealthChecksDemo.alive)
+            alive_status="Alive";
+        else
+            alive_status="Not Alive";
+        if(HealthChecksDemo.ready)
+            ready_status="Ready";
+        else
+            ready_status="Not Ready";
+            
+        return System.getenv("HOSTNAME")+": Current status :" + alive_status + " / "+ready_status;
     }
 
     @GET
     @Path("setReady")
     @Produces(MediaType.TEXT_PLAIN)
     public String setReady() {
-        GreetingResource.ready=true;
-        return System.getenv("HOSTNAME")+":Ready = " + GreetingResource.ready;
+        HealthChecksDemo.ready=true;
+        return getStatus();
     }
 
     @GET
     @Path("setNotReady")
     @Produces(MediaType.TEXT_PLAIN)
     public String setNotReady() {
-        GreetingResource.ready=false;
-        return System.getenv("HOSTNAME")+":Ready = " + GreetingResource.ready; 
+        HealthChecksDemo.ready=false;
+        return getStatus(); 
     }
 
     @GET
     @Path("setAlive")
     public String setAlive()
     {
-        GreetingResource.alive=true;
-        return System.getenv("HOSTNAME")+":Ready = " + GreetingResource.alive;
+        HealthChecksDemo.alive=true;
+        return getStatus();
     }
 
     @GET
     @Path("setNotAlive")
     public String setNotAlive()
     {
-        GreetingResource.alive=false;
-        return System.getenv("HOSTNAME")+":Ready = " + GreetingResource.alive;
+        HealthChecksDemo.alive=false;
+        return getStatus();
     }
 
 

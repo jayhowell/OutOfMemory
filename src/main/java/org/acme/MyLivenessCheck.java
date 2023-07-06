@@ -11,7 +11,7 @@ public class MyLivenessCheck implements HealthCheck {
 
     @Override
     public HealthCheckResponse call() {
-        if(GreetingResource.alive==true)
+        if(HealthChecksDemo.alive==true)
             return HealthCheckResponse.up("Liveliness: alive");
         else return HealthCheckResponse.down("Liveliness: dead");
     }

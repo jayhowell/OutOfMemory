@@ -13,7 +13,7 @@ public class MyReadinessCheck implements HealthCheck {
 
     @Override
     public HealthCheckResponse call() {
-        if(GreetingResource.ready==true)
+        if(HealthChecksDemo.ready==true)
             return HealthCheckResponse.up("readiness:ready");
         else return HealthCheckResponse.down("readiness:notready");
     }
