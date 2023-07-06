@@ -35,7 +35,7 @@ public class HealthChecksDemo {
         else
             ready_status="Not Ready";
             
-        return System.getenv("HOSTNAME")+": Current status :" + alive_status + " / "+ready_status;
+        return System.getenv("HOSTNAME")+": Current status : " + alive_status + " / "+ready_status;
     }
 
     @GET
