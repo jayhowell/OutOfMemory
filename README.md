@@ -11,7 +11,7 @@ This project also has health checks in it. The reason for this test is to show O
 Openshift.
 Instructions:
 
-1. Add the following to the Java arguments in the container. Most likely it will be defined as environment variables.
+1. Add the following to the Java arguments in the container. Most likely it will be defined as environment variables. If you are using the quarkus build down below, add the following environment variables to JAVA\_OPTS\_APPEND
 
 ```
 -XX:+HeapDumpOnOutOfMemoryError
